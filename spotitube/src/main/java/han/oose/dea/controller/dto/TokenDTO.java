@@ -1,6 +1,6 @@
 package han.oose.dea.controller.dto;
 
-public class UserDTO {
+public class TokenDTO {
+    public String token;
     public String user;
-    public String password;
 }
