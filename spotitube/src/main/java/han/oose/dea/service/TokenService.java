@@ -3,6 +3,7 @@ package han.oose.dea.service;
 import han.oose.dea.dao.ITokenDAO;
 
 import javax.inject.Inject;
+import java.util.UUID;
 
 public class TokenService {
 
@@ -10,6 +11,14 @@ public class TokenService {
 
     public String getToken(String username) {
         return tokenDAO.getToken(username);
+    }
+
+    public String generateToken() {
+        return UUID.randomUUID().toString();
+    }
+
+    public void updateToken(String username, String token) {
+        tokenDAO.updateToken(username, token);
     }
 
     @Inject

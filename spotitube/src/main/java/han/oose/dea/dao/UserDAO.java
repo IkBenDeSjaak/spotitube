@@ -14,31 +14,25 @@ public class UserDAO implements IUserDAO {
     DataSource dataSource;
 
     @Override
-    public boolean userExists(String username, String password) {
-        String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+    public String getHashedPassword(String username) {
+        String sql = "SELECT password FROM users WHERE username = ?";
 
         try {
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, username);
-            statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                User user = new User(resultSet.getString("username"), resultSet.getString("password"));
-
-                if (user != null) {
-                    return true;
-                } else {
-                    return false;
-                }
+                String hashedPassword = resultSet.getString("password");
+                return hashedPassword;
             }
 
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
 
-        return false;
+        return null;
     }
 
     public void setDataSource(DataSource dataSource) {

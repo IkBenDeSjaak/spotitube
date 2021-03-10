@@ -8,8 +8,8 @@ public class UserService {
 
     private IUserDAO userDAO;
 
-    public boolean userExists(String username, String password) {
-        return userDAO.userExists(username, password);
+    public String getHashedPassword(String username) {
+        return userDAO.getHashedPassword(username);
     }
 
     @Inject

@@ -32,6 +32,27 @@ public class TokenDAO implements ITokenDAO {
         return null;
     }
 
+    @Override
+    public void updateToken(String username, String token) {
+
+        String sql = "UPDATE tokens SET token = ? WHERE username = ?";
+
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, token);
+            statement.setString(2, username);
+            int rowsAffected = statement.executeUpdate();
+
+            if(rowsAffected != 1) {
+                //TODO: Throw exception
+            }
+
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+    }
+
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }

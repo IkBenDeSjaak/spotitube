@@ -1,6 +1,7 @@
 package han.oose.dea.service;
 
 import han.oose.dea.controller.dto.TokenDTO;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.inject.Inject;
 
@@ -10,13 +11,26 @@ public class LoginService {
     private UserService userService;
 
     public TokenDTO login(String username, String password) {
-        if (userService.userExists(username, password)) {
+        String hashedPassword = userService.getHashedPassword(username);
+
+        if(passwordCorrect(hashedPassword, password)) {
+            String token = tokenService.generateToken();
+            tokenService.updateToken(username, token);
+
             TokenDTO tokenDTO = new TokenDTO();
             tokenDTO.user = username;
-            tokenDTO.token = tokenService.getToken(username);
+            tokenDTO.token = token;
             return tokenDTO;
         } else {
             return null;
+        }
+    }
+
+    public boolean passwordCorrect(String hashedPassword, String providedPassword) {
+        if(DigestUtils.sha256Hex(providedPassword).equals(hashedPassword)) {
+            return true;
+        } else {
+            return false;
         }
     }
 
