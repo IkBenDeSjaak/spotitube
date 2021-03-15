@@ -19,9 +19,9 @@ public class PlaylistDAO implements IPlaylistDAO {
     @Override
     public List<Playlist> getAllPlaylists(String username) {
 
-        String sql = "SELECT DISTINCT p.id AS id, p.name AS name, p.owner AS owner, (SELECT SUM(duration) FROM tracks t INNER JOIN playlist_tracks pt ON t.id = pt.trackID WHERE p.id = pt.id ) AS duration " +
+        String sql = "SELECT DISTINCT p.id AS id, p.name AS name, p.owner AS owner, (SELECT SUM(duration) FROM tracks t INNER JOIN playlist_tracks pt ON t.id = pt.trackID WHERE p.id = pt.playlistId ) AS duration " +
                 "FROM playlists AS p " +
-                "INNER JOIN playlist_tracks AS pt " +
+                "LEFT OUTER JOIN playlist_tracks AS pt " +
                 "ON p.id = pt.playlistId";
 
         try (Connection connection = dataSource.getConnection()) {
@@ -56,12 +56,13 @@ public class PlaylistDAO implements IPlaylistDAO {
     }
 
     @Override
-    public void deletePlaylist(int id) {
-        String sql = "DELETE FROM playlists WHERE id = ?";
+    public void deletePlaylist(int id, String username) {
+        String sql = "DELETE FROM playlists WHERE id = ? AND owner = ?";
 
         try (Connection connection = dataSource.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, id);
+            statement.setString(2, username);
             int rowsAffected = statement.executeUpdate();
 
             if (rowsAffected != 1) {
@@ -72,6 +73,46 @@ public class PlaylistDAO implements IPlaylistDAO {
             exception.printStackTrace();
         }
 
+    }
+
+    @Override
+    public void addPlaylist(String name, String username) {
+        String sql = "INSERT INTO playlists (name, owner) VALUES (?, ?)";
+
+        try (Connection connection = dataSource.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, name);
+            statement.setString(2, username);
+            int rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected != 1) {
+                //TODO: Throw exception
+            }
+
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void editPlaylist(int id, String name, String username) {
+        String sql = "UPDATE playlists SET name = ? WHERE id = ? AND owner = ?";
+
+        try (Connection connection = dataSource.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, name);
+            statement.setInt(2, id);
+            statement.setString(2, username);
+            int rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected != 1) {
+                //TODO: Throw exception
+            }
+
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
     }
 
 

@@ -19,10 +19,16 @@ public class PlaylistsService {
         return playlistsDTO;
     }
 
-    public PlaylistsDTO deletePlaylist(int id, String username) {
-        playlistDAO.deletePlaylist(id);
-        PlaylistsDTO playlistsDTO = getAllPlaylists(username);
-        return playlistsDTO;
+    public void deletePlaylist(int id, String username) {
+        playlistDAO.deletePlaylist(id, username);
+    }
+
+    public void addPlaylist(String name, String username) {
+        playlistDAO.addPlaylist(name, username);
+    }
+
+    public void editPlaylist(int id, String name, String username) {
+        playlistDAO.editPlaylist(id, name, username);
     }
 
     private PlaylistsDTO convertPlaylistsListToPlaylistsDTO(List<Playlist> playlists) {
@@ -50,5 +56,4 @@ public class PlaylistsService {
     public void setPlaylistDAO(IPlaylistDAO playlistDAO) {
         this.playlistDAO = playlistDAO;
     }
-
 }
