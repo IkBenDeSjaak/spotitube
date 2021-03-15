@@ -21,6 +21,10 @@ public class TokenService {
         tokenDAO.updateToken(username, token);
     }
 
+    public String verifyToken(String token) {
+        return tokenDAO.verifyToken(token);
+    }
+
     @Inject
     public void setTokenDAO(ITokenDAO tokenDAO) {
         this.tokenDAO = tokenDAO;

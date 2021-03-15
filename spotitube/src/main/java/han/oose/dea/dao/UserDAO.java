@@ -1,6 +1,8 @@
 package han.oose.dea.dao;
 
 import han.oose.dea.domain.User;
+import han.oose.dea.exceptions.InvalidTokenException;
+import han.oose.dea.exceptions.UsernamePasswordCombinationNotFoundException;
 
 import javax.annotation.Resource;
 import javax.enterprise.inject.Default;
@@ -17,16 +19,19 @@ public class UserDAO implements IUserDAO {
     public String getHashedPassword(String username) {
         String sql = "SELECT password FROM users WHERE username = ?";
 
-        try {
-            Connection connection = dataSource.getConnection();
+        try (Connection connection = dataSource.getConnection()) {
+
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
                 String hashedPassword = resultSet.getString("password");
+
                 return hashedPassword;
             }
+
+            throw new UsernamePasswordCombinationNotFoundException();
 
         } catch (SQLException exception) {
             exception.printStackTrace();

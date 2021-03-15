@@ -27,7 +27,7 @@ public class LoginController {
     public Response login(UserDTO userDTO) {
         TokenDTO tokenDTO = loginService.login(userDTO.user, userDTO.password);
 
-        return Response.status(200).entity(tokenDTO).build();
+        return Response.status(201).entity(tokenDTO).build();
     }
 
     @Inject
