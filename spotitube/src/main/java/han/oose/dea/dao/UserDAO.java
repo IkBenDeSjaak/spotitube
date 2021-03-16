@@ -17,9 +17,8 @@ public class UserDAO implements IUserDAO {
 
     @Override
     public String getHashedPassword(String username) {
-        String sql = "SELECT password FROM users WHERE username = ?";
-
         try (Connection connection = dataSource.getConnection()) {
+            String sql = "SELECT password FROM users WHERE username = ?";
 
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, username);

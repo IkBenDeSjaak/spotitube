@@ -15,9 +15,10 @@ public class TokenDAO implements ITokenDAO {
 
     @Override
     public String getToken(String username) {
-        String sql = "SELECT token FROM tokens WHERE username = ?";
 
         try (Connection connection = dataSource.getConnection()) {
+            String sql = "SELECT token FROM tokens WHERE username = ?";
+
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
@@ -36,9 +37,10 @@ public class TokenDAO implements ITokenDAO {
 
     @Override
     public void updateToken(String username, String token) {
-        String sql = "UPDATE tokens SET token = ? WHERE username = ?";
 
         try (Connection connection = dataSource.getConnection()) {
+            String sql = "UPDATE tokens SET token = ? WHERE username = ?";
+
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, token);
             statement.setString(2, username);
@@ -55,9 +57,10 @@ public class TokenDAO implements ITokenDAO {
 
     @Override
     public String verifyToken(String token) {
-        String sql = "SELECT * from tokens WHERE token = ?";
 
         try (Connection connection = dataSource.getConnection()) {
+            String sql = "SELECT * from tokens WHERE token = ?";
+
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, token);
             ResultSet resultSet = statement.executeQuery();

@@ -19,12 +19,12 @@ public class PlaylistDAO implements IPlaylistDAO {
     @Override
     public List<Playlist> getAllPlaylists(String username) {
 
-        String sql = "SELECT DISTINCT p.id AS id, p.name AS name, p.owner AS owner, (SELECT SUM(duration) FROM tracks t INNER JOIN playlist_tracks pt ON t.id = pt.trackID WHERE p.id = pt.playlistId ) AS duration " +
-                "FROM playlists AS p " +
-                "LEFT OUTER JOIN playlist_tracks AS pt " +
-                "ON p.id = pt.playlistId";
-
         try (Connection connection = dataSource.getConnection()) {
+            String sql = "SELECT DISTINCT p.id AS id, p.name AS name, p.owner AS owner, (SELECT SUM(duration) FROM tracks t INNER JOIN playlist_tracks pt ON t.id = pt.trackID WHERE p.id = pt.playlistId ) AS duration " +
+                    "FROM playlists AS p " +
+                    "LEFT OUTER JOIN playlist_tracks AS pt " +
+                    "ON p.id = pt.playlistId";
+
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
 
@@ -57,9 +57,10 @@ public class PlaylistDAO implements IPlaylistDAO {
 
     @Override
     public void deletePlaylist(int id, String username) {
-        String sql = "DELETE FROM playlists WHERE id = ? AND owner = ?";
 
         try (Connection connection = dataSource.getConnection()) {
+            String sql = "DELETE FROM playlists WHERE id = ? AND owner = ?";
+
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, id);
             statement.setString(2, username);
@@ -77,9 +78,10 @@ public class PlaylistDAO implements IPlaylistDAO {
 
     @Override
     public void addPlaylist(String name, String username) {
-        String sql = "INSERT INTO playlists (name, owner) VALUES (?, ?)";
 
         try (Connection connection = dataSource.getConnection()) {
+            String sql = "INSERT INTO playlists (name, owner) VALUES (?, ?)";
+
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, name);
             statement.setString(2, username);
@@ -97,9 +99,10 @@ public class PlaylistDAO implements IPlaylistDAO {
 
     @Override
     public void editPlaylist(int id, String name, String username) {
-        String sql = "UPDATE playlists SET name = ? WHERE id = ? AND owner = ?";
 
         try (Connection connection = dataSource.getConnection()) {
+            String sql = "UPDATE playlists SET name = ? WHERE id = ? AND owner = ?";
+            
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, name);
             statement.setInt(2, id);
