@@ -1,6 +1,7 @@
 package han.oose.dea.service;
 
 import han.oose.dea.controller.dto.TokenDTO;
+import han.oose.dea.exceptions.PasswordIsNotCorrectException;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.inject.Inject;
@@ -22,7 +23,7 @@ public class LoginService {
             tokenDTO.token = token;
             return tokenDTO;
         } else {
-            return null;
+            throw new PasswordIsNotCorrectException();
         }
     }
 

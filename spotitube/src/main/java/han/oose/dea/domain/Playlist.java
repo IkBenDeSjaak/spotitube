@@ -3,7 +3,7 @@ package han.oose.dea.domain;
 public class Playlist {
     private int id;
     private String name;
-    private boolean owner;
+    private String owner;
     private int duration;
 
     public int getId() {
@@ -22,11 +22,11 @@ public class Playlist {
         this.name = name;
     }
 
-    public boolean getOwner() {
+    public String getOwner() {
         return owner;
     }
 
-    public void setOwner(boolean owner) {
+    public void setOwner(String owner) {
         this.owner = owner;
     }
 

@@ -19,6 +19,24 @@ public class TracksService {
         return tracksDTO;
     }
 
+    public TracksDTO getAllTracksFromPlaylist(int playlistId) {
+        List<Track> tracks = trackDAO.getAllTracksFromPlaylist(playlistId);
+        TracksDTO tracksDTO = convertTracksListToTracksDTO(tracks);
+        return tracksDTO;
+    }
+
+    public void deleteTrackFromPlaylist(int playlistId, int trackId) {
+        trackDAO.deleteTrackFromPlaylist(playlistId, trackId);
+    }
+
+    public void addTrackToPlaylist(int playlistId, int trackId, boolean offlineAvailable) {
+        trackDAO.addTrackToPlaylist(playlistId, trackId, offlineAvailable);
+    }
+
+    public void deleteAllTracksFromPlaylist(int playlistId) {
+        trackDAO.deleteAllTracksFromPlaylist(playlistId);
+    }
+
     private TracksDTO convertTracksListToTracksDTO(List<Track> tracks) {
         TracksDTO tracksDTO = new TracksDTO();
         tracksDTO.tracks = new ArrayList<>();
@@ -45,5 +63,4 @@ public class TracksService {
     public void setTrackDAO(ITrackDAO trackDAO) {
         this.trackDAO = trackDAO;
     }
-
 }

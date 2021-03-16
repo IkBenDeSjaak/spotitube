@@ -1,7 +1,5 @@
 package han.oose.dea.dao;
 
-import han.oose.dea.domain.User;
-import han.oose.dea.exceptions.InvalidTokenException;
 import han.oose.dea.exceptions.UsernamePasswordCombinationNotFoundException;
 
 import javax.annotation.Resource;

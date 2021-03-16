@@ -54,6 +54,110 @@ public class TrackDAO implements ITrackDAO{
         return null;
     }
 
+    @Override
+    public List<Track> getAllTracksFromPlaylist(int playlistId) {
+
+        try(Connection connection = dataSource.getConnection()) {
+            String sql = "SELECT * FROM tracks t INNER JOIN playlist_tracks pt ON t.id = pt.trackId WHERE pt.playlistId = ?";
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, playlistId);
+            ResultSet resultSet = statement.executeQuery();
+
+            List<Track> tracks = new ArrayList<>();
+
+            while (resultSet.next()) {
+                Track track = new Track();
+
+                track.setId(resultSet.getInt("id"));
+                track.setTitle(resultSet.getString("title"));
+                track.setPerformer(resultSet.getString("performer"));
+                track.setDuration(resultSet.getInt("duration"));
+                track.setAlbum(resultSet.getString("album"));
+                track.setPlaycount(resultSet.getInt("playcount"));
+                track.setPublicationDate(resultSet.getString("publicationDate"));
+                track.setDescription(resultSet.getString("description"));
+                track.setOfflineAvailable(resultSet.getBoolean("offlineAvailable"));
+
+                tracks.add(track);
+            }
+
+            return tracks;
+
+
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+
+        return null;
+    }
+
+    @Override
+    public void deleteTrackFromPlaylist(int playlistId, int trackId) {
+
+        try(Connection connection = dataSource.getConnection()) {
+            String sql = "DELETE FROM playlist_tracks WHERE playlistId = ? AND trackId = ?";
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, playlistId);
+            statement.setInt(2, trackId);
+
+            int rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected != 1) {
+                //TODO: Throw exception
+            }
+
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void addTrackToPlaylist(int playlistId, int trackId, boolean offlineAvailable) {
+
+        try(Connection connection = dataSource.getConnection()) {
+            String sql = "INSERT INTO playlist_tracks (playlistId, trackId, offlineAvailable) VALUES (?, ?, ?)";
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, playlistId);
+            statement.setInt(2, trackId);
+            statement.setBoolean(3, offlineAvailable);
+
+            int rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected != 1) {
+                //TODO: Throw exception
+            }
+
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+
+
+    }
+
+    @Override
+    public void deleteAllTracksFromPlaylist(int playlistId) {
+
+        try(Connection connection = dataSource.getConnection()) {
+            String sql = "DELETE FROM playlist_tracks WHERE playlistId = ?";
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, playlistId);
+
+            int rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected != 1) {
+                //TODO: Throw exception
+            }
+
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+    }
+
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }

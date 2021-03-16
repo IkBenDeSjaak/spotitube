@@ -12,26 +12,28 @@ import java.util.List;
 public class PlaylistsService {
 
     private IPlaylistDAO playlistDAO;
+    private TracksService tracksService;
 
     public PlaylistsDTO getAllPlaylists(String username) {
         List<Playlist> playlists = playlistDAO.getAllPlaylists(username);
-        PlaylistsDTO playlistsDTO = convertPlaylistsListToPlaylistsDTO(playlists);
+        PlaylistsDTO playlistsDTO = convertPlaylistsListToPlaylistsDTO(playlists, username);
         return playlistsDTO;
     }
 
-    public void deletePlaylist(int id, String username) {
-        playlistDAO.deletePlaylist(id, username);
+    public void deletePlaylist(int playlistId) {
+        tracksService.deleteAllTracksFromPlaylist(playlistId);
+        playlistDAO.deletePlaylist(playlistId);
     }
 
     public void addPlaylist(String name, String username) {
         playlistDAO.addPlaylist(name, username);
     }
 
-    public void editPlaylist(int id, String name, String username) {
-        playlistDAO.editPlaylist(id, name, username);
+    public void editPlaylist(int playlistId, String name) {
+        playlistDAO.editPlaylist(playlistId, name);
     }
 
-    private PlaylistsDTO convertPlaylistsListToPlaylistsDTO(List<Playlist> playlists) {
+    private PlaylistsDTO convertPlaylistsListToPlaylistsDTO(List<Playlist> playlists, String username) {
         PlaylistsDTO playlistsDTO = new PlaylistsDTO();
         playlistsDTO.playlists = new ArrayList<>();
 
@@ -40,7 +42,11 @@ public class PlaylistsService {
             PlaylistDTO playlistDTO = new PlaylistDTO();
             playlistDTO.id = playlist.getId();
             playlistDTO.name = playlist.getName();
-            playlistDTO.owner = playlist.getOwner();
+            if(playlist.getOwner().equals(username)) {
+                playlistDTO.owner = true;
+            } else {
+                playlistDTO.owner = false;
+            }
             playlistDTO.tracks = new ArrayList<>();
 
             playlistsDTO.playlists.add(playlistDTO);
@@ -55,5 +61,10 @@ public class PlaylistsService {
     @Inject
     public void setPlaylistDAO(IPlaylistDAO playlistDAO) {
         this.playlistDAO = playlistDAO;
+    }
+
+    @Inject
+    public void setTracksService(TracksService tracksService) {
+        this.tracksService = tracksService;
     }
 }

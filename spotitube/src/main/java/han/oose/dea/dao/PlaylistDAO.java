@@ -35,12 +35,7 @@ public class PlaylistDAO implements IPlaylistDAO {
 
                 playlist.setId(resultSet.getInt("id"));
                 playlist.setName(resultSet.getString("name"));
-                if(resultSet.getString("owner").equals(username)) {
-                    playlist.setOwner(true);
-                } else {
-                    playlist.setOwner(false);
-                }
-
+                playlist.setOwner(resultSet.getString("owner"));
                 playlist.setDuration(resultSet.getInt("duration"));
 
                 playlists.add(playlist);
@@ -56,14 +51,13 @@ public class PlaylistDAO implements IPlaylistDAO {
     }
 
     @Override
-    public void deletePlaylist(int id, String username) {
+    public void deletePlaylist(int id) {
 
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "DELETE FROM playlists WHERE id = ? AND owner = ?";
+            String sql = "DELETE FROM playlists WHERE id = ?";
 
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, id);
-            statement.setString(2, username);
             int rowsAffected = statement.executeUpdate();
 
             if (rowsAffected != 1) {
@@ -98,15 +92,14 @@ public class PlaylistDAO implements IPlaylistDAO {
     }
 
     @Override
-    public void editPlaylist(int id, String name, String username) {
+    public void editPlaylist(int id, String name) {
 
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "UPDATE playlists SET name = ? WHERE id = ? AND owner = ?";
-            
+            String sql = "UPDATE playlists SET name = ? WHERE id = ?";
+
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, name);
             statement.setInt(2, id);
-            statement.setString(2, username);
             int rowsAffected = statement.executeUpdate();
 
             if (rowsAffected != 1) {

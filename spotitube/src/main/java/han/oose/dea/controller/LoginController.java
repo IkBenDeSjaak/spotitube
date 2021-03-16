@@ -17,7 +17,7 @@ public class LoginController {
     @GET
     @Path("hi")
     public String helloWorld(){
-        return "May the force be with you, Luke!";
+        return "May the force be with you!";
     }
 
     @POST
@@ -25,9 +25,20 @@ public class LoginController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response login(UserDTO userDTO) {
+        if (!isUserDTOSet(userDTO)) {
+            throw new BadRequestException();
+        }
         TokenDTO tokenDTO = loginService.login(userDTO.user, userDTO.password);
 
-        return Response.status(201).entity(tokenDTO).build();
+        return Response.status(Response.Status.CREATED).entity(tokenDTO).build();
+    }
+
+    private boolean isUserDTOSet(UserDTO userDTO) {
+        if(userDTO.user == null || userDTO.password == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     @Inject

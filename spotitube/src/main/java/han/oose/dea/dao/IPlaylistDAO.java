@@ -8,9 +8,9 @@ public interface IPlaylistDAO {
 
     List<Playlist> getAllPlaylists(String username);
 
-    void deletePlaylist(int id, String username);
+    void deletePlaylist(int id);
 
     void addPlaylist(String name, String username);
 
-    void editPlaylist(int id, String name, String username);
+    void editPlaylist(int id, String name);
 }
