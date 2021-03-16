@@ -38,11 +38,11 @@ public class PlaylistsService {
         playlistsDTO.playlists = new ArrayList<>();
 
         int totalLength = 0;
-        for(Playlist playlist : playlists) {
+        for (Playlist playlist : playlists) {
             PlaylistDTO playlistDTO = new PlaylistDTO();
             playlistDTO.id = playlist.getId();
             playlistDTO.name = playlist.getName();
-            if(playlist.getOwner().equals(username)) {
+            if (playlist.getOwner().equals(username)) {
                 playlistDTO.owner = true;
             } else {
                 playlistDTO.owner = false;

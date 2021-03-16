@@ -41,7 +41,7 @@ public class TracksService {
         TracksDTO tracksDTO = new TracksDTO();
         tracksDTO.tracks = new ArrayList<>();
 
-        for(Track track : tracks) {
+        for (Track track : tracks) {
             TrackDTO trackDTO = new TrackDTO();
             trackDTO.id = track.getId();
             trackDTO.title = track.getTitle();

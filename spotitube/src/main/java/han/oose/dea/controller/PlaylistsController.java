@@ -19,8 +19,8 @@ public class PlaylistsController {
     @GET
     @Path("playlists")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllPlaylists(@QueryParam("token") String token){
-        if(!isTokenSet(token)) {
+    public Response getAllPlaylists(@QueryParam("token") String token) {
+        if (!isTokenSet(token)) {
             throw new BadRequestException();
         }
 
@@ -35,7 +35,7 @@ public class PlaylistsController {
     @Path("playlists/{playlistId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response deletePlaylist(@PathParam("playlistId") int playlistId, @QueryParam("token") String token) {
-        if(!isPlaylistIdSet(playlistId) || !isTokenSet(token)) {
+        if (!isPlaylistIdSet(playlistId) || !isTokenSet(token)) {
             throw new BadRequestException();
         }
 
@@ -52,7 +52,7 @@ public class PlaylistsController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addPlaylist(PlaylistDTO playlistDTO, @QueryParam("token") String token) {
-        if(!isPlaylistDTOSet(playlistDTO) || !isTokenSet(token)) {
+        if (!isPlaylistDTOSet(playlistDTO) || !isTokenSet(token)) {
             throw new BadRequestException();
         }
 
@@ -69,7 +69,7 @@ public class PlaylistsController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response editPlaylist(PlaylistDTO playlistDTO, @PathParam("playlistId") int playlistId, @QueryParam("token") String token) {
-        if(!isPlaylistDTOSet(playlistDTO) || !isPlaylistIdSet(playlistId) || !isTokenSet(token)) {
+        if (!isPlaylistDTOSet(playlistDTO) || !isPlaylistIdSet(playlistId) || !isTokenSet(token)) {
             throw new BadRequestException();
         }
 
@@ -90,7 +90,7 @@ public class PlaylistsController {
     }
 
     private boolean isPlaylistDTOSet(PlaylistDTO playlistDTO) {
-        if(playlistDTO.name == null) {
+        if (playlistDTO.name == null) {
             return false;
         } else {
             return true;

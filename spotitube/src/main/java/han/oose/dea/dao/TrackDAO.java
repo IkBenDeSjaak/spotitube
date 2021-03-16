@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TrackDAO implements ITrackDAO{
+public class TrackDAO implements ITrackDAO {
 
     @Resource(name = "jdbc/spotitube")
     DataSource dataSource;
@@ -19,7 +19,7 @@ public class TrackDAO implements ITrackDAO{
     @Override
     public List<Track> getAllAvailableTracks(int playlistId) {
 
-        try(Connection connection = dataSource.getConnection()) {
+        try (Connection connection = dataSource.getConnection()) {
             String sql = "SELECT * FROM tracks t LEFT OUTER JOIN playlist_tracks pt ON t.id = pt.trackId WHERE t.id NOT IN (SELECT trackId FROM playlist_tracks WHERE playlistId = ?)";
 
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -57,7 +57,7 @@ public class TrackDAO implements ITrackDAO{
     @Override
     public List<Track> getAllTracksFromPlaylist(int playlistId) {
 
-        try(Connection connection = dataSource.getConnection()) {
+        try (Connection connection = dataSource.getConnection()) {
             String sql = "SELECT * FROM tracks t INNER JOIN playlist_tracks pt ON t.id = pt.trackId WHERE pt.playlistId = ?";
 
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -95,7 +95,7 @@ public class TrackDAO implements ITrackDAO{
     @Override
     public void deleteTrackFromPlaylist(int playlistId, int trackId) {
 
-        try(Connection connection = dataSource.getConnection()) {
+        try (Connection connection = dataSource.getConnection()) {
             String sql = "DELETE FROM playlist_tracks WHERE playlistId = ? AND trackId = ?";
 
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -117,7 +117,7 @@ public class TrackDAO implements ITrackDAO{
     @Override
     public void addTrackToPlaylist(int playlistId, int trackId, boolean offlineAvailable) {
 
-        try(Connection connection = dataSource.getConnection()) {
+        try (Connection connection = dataSource.getConnection()) {
             String sql = "INSERT INTO playlist_tracks (playlistId, trackId, offlineAvailable) VALUES (?, ?, ?)";
 
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -141,7 +141,7 @@ public class TrackDAO implements ITrackDAO{
     @Override
     public void deleteAllTracksFromPlaylist(int playlistId) {
 
-        try(Connection connection = dataSource.getConnection()) {
+        try (Connection connection = dataSource.getConnection()) {
             String sql = "DELETE FROM playlist_tracks WHERE playlistId = ?";
 
             PreparedStatement statement = connection.prepareStatement(sql);

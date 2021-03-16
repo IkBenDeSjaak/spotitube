@@ -14,7 +14,7 @@ public class LoginService {
     public TokenDTO login(String username, String password) {
         String hashedPassword = userService.getHashedPassword(username);
 
-        if(passwordCorrect(hashedPassword, password)) {
+        if (passwordCorrect(hashedPassword, password)) {
             String token = tokenService.generateToken();
             tokenService.updateToken(username, token);
 
@@ -28,7 +28,7 @@ public class LoginService {
     }
 
     public boolean passwordCorrect(String hashedPassword, String providedPassword) {
-        if(DigestUtils.sha256Hex(providedPassword).equals(hashedPassword)) {
+        if (DigestUtils.sha256Hex(providedPassword).equals(hashedPassword)) {
             return true;
         } else {
             return false;

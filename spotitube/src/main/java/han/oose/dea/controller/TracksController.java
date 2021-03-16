@@ -20,7 +20,7 @@ public class TracksController {
     @Path("tracks")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllAvailableTracks(@QueryParam("forPlaylist") int forPlaylistId, @QueryParam("token") String token) {
-        if(!isForPlaylistIdSet(forPlaylistId) || !isTokenSet(token)) {
+        if (!isForPlaylistIdSet(forPlaylistId) || !isTokenSet(token)) {
             throw new BadRequestException();
         }
 
@@ -35,7 +35,7 @@ public class TracksController {
     @Path("playlists/{playlistId}/tracks")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllTracksForPlaylist(@PathParam("playlistId") int playlistId, @QueryParam("token") String token) {
-        if(!isPlaylistIdSet(playlistId) || !isTokenSet(token)) {
+        if (!isPlaylistIdSet(playlistId) || !isTokenSet(token)) {
             throw new BadRequestException();
         }
 
@@ -50,7 +50,7 @@ public class TracksController {
     @Path("playlists/{playlistId}/tracks/{trackId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteTrackFromPlaylist(@PathParam("playlistId") int playlistId, @PathParam("trackId") int trackId, @QueryParam("token") String token) {
-        if(!isPlaylistIdSet(playlistId) || !isTrackIdSet(trackId) || !isTokenSet(token)) {
+        if (!isPlaylistIdSet(playlistId) || !isTrackIdSet(trackId) || !isTokenSet(token)) {
             throw new BadRequestException();
         }
 
@@ -67,7 +67,7 @@ public class TracksController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addTrackToPlaylist(TrackDTO trackDTO, @PathParam("playlistId") int playlistId, @QueryParam("token") String token) {
-        if(!isTrackDTOSet(trackDTO) || !isPlaylistIdSet(playlistId) || !isTokenSet(token)) {
+        if (!isTrackDTOSet(trackDTO) || !isPlaylistIdSet(playlistId) || !isTokenSet(token)) {
             throw new BadRequestException();
         }
 
@@ -96,7 +96,7 @@ public class TracksController {
     }
 
     private boolean isTrackDTOSet(TrackDTO trackDTO) {
-        if(trackDTO.id == 0) {
+        if (trackDTO.id == 0) {
             return false;
         } else {
             return true;

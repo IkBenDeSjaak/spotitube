@@ -16,7 +16,7 @@ public class LoginController {
 
     @GET
     @Path("hi")
-    public String helloWorld(){
+    public String helloWorld() {
         return "May the force be with you!";
     }
 
@@ -28,13 +28,14 @@ public class LoginController {
         if (!isUserDTOSet(userDTO)) {
             throw new BadRequestException();
         }
+
         TokenDTO tokenDTO = loginService.login(userDTO.user, userDTO.password);
 
         return Response.status(Response.Status.CREATED).entity(tokenDTO).build();
     }
 
     private boolean isUserDTOSet(UserDTO userDTO) {
-        if(userDTO.user == null || userDTO.password == null) {
+        if (userDTO.user == null || userDTO.password == null) {
             return false;
         } else {
             return true;
