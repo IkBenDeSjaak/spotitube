@@ -58,11 +58,7 @@ public class PlaylistDAO implements IPlaylistDAO {
 
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, id);
-            int rowsAffected = statement.executeUpdate();
-
-            if (rowsAffected != 1) {
-                //TODO: Throw exception
-            }
+            statement.executeUpdate();
 
         } catch (SQLException exception) {
             exception.printStackTrace();
@@ -79,11 +75,7 @@ public class PlaylistDAO implements IPlaylistDAO {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, name);
             statement.setString(2, username);
-            int rowsAffected = statement.executeUpdate();
-
-            if (rowsAffected != 1) {
-                //TODO: Throw exception
-            }
+            statement.executeUpdate();
 
         } catch (SQLException exception) {
             exception.printStackTrace();
@@ -100,11 +92,7 @@ public class PlaylistDAO implements IPlaylistDAO {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, name);
             statement.setInt(2, id);
-            int rowsAffected = statement.executeUpdate();
-
-            if (rowsAffected != 1) {
-                //TODO: Throw exception
-            }
+            statement.executeUpdate();
 
         } catch (SQLException exception) {
             exception.printStackTrace();

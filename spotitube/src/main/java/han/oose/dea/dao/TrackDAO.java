@@ -101,12 +101,7 @@ public class TrackDAO implements ITrackDAO {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, playlistId);
             statement.setInt(2, trackId);
-
-            int rowsAffected = statement.executeUpdate();
-
-            if (rowsAffected != 1) {
-                //TODO: Throw exception
-            }
+            statement.executeUpdate();
 
         } catch (SQLException exception) {
             exception.printStackTrace();
@@ -124,12 +119,7 @@ public class TrackDAO implements ITrackDAO {
             statement.setInt(1, playlistId);
             statement.setInt(2, trackId);
             statement.setBoolean(3, offlineAvailable);
-
-            int rowsAffected = statement.executeUpdate();
-
-            if (rowsAffected != 1) {
-                //TODO: Throw exception
-            }
+            statement.executeUpdate();
 
         } catch (SQLException exception) {
             exception.printStackTrace();
@@ -146,12 +136,7 @@ public class TrackDAO implements ITrackDAO {
 
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, playlistId);
-
-            int rowsAffected = statement.executeUpdate();
-
-            if (rowsAffected != 1) {
-                //TODO: Throw exception
-            }
+            statement.executeUpdate();
 
         } catch (SQLException exception) {
             exception.printStackTrace();
