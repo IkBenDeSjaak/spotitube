@@ -37,7 +37,6 @@ public class PlaylistsService {
         PlaylistsDTO playlistsDTO = new PlaylistsDTO();
         playlistsDTO.playlists = new ArrayList<>();
 
-        int totalLength = 0;
         for (Playlist playlist : playlists) {
             PlaylistDTO playlistDTO = new PlaylistDTO();
             playlistDTO.id = playlist.getId();
@@ -50,12 +49,21 @@ public class PlaylistsService {
             playlistDTO.tracks = new ArrayList<>();
 
             playlistsDTO.playlists.add(playlistDTO);
+        }
+
+        playlistsDTO.length = calculateTotalLength(playlists);
+
+        return playlistsDTO;
+    }
+
+    private int calculateTotalLength(List<Playlist> playlists) {
+        int totalLength = 0;
+
+        for(Playlist playlist : playlists) {
             totalLength += playlist.getDuration();
         }
 
-        playlistsDTO.length = totalLength;
-
-        return playlistsDTO;
+        return totalLength;
     }
 
     @Inject
