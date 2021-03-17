@@ -13,8 +13,8 @@ public class TracksService {
 
     private ITrackDAO trackDAO;
 
-    public TracksDTO getAllAvailableTracks(int playlistId) {
-        List<Track> tracks = trackDAO.getAllAvailableTracks(playlistId);
+    public TracksDTO getAllAvailableTracksForPlaylist(int playlistId) {
+        List<Track> tracks = trackDAO.getAllAvailableTracksForPlaylist(playlistId);
         TracksDTO tracksDTO = convertTracksListToTracksDTO(tracks);
         return tracksDTO;
     }

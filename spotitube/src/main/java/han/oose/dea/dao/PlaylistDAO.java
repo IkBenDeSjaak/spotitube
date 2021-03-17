@@ -4,6 +4,7 @@ import han.oose.dea.domain.Playlist;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
+import javax.ws.rs.InternalServerErrorException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -44,10 +45,9 @@ public class PlaylistDAO implements IPlaylistDAO {
             return playlists;
 
         } catch (SQLException exception) {
-            exception.printStackTrace();
+            throw new InternalServerErrorException();
         }
 
-        return null;
     }
 
     @Override
@@ -61,7 +61,7 @@ public class PlaylistDAO implements IPlaylistDAO {
             statement.executeUpdate();
 
         } catch (SQLException exception) {
-            exception.printStackTrace();
+            throw new InternalServerErrorException();
         }
 
     }
@@ -78,7 +78,7 @@ public class PlaylistDAO implements IPlaylistDAO {
             statement.executeUpdate();
 
         } catch (SQLException exception) {
-            exception.printStackTrace();
+            throw new InternalServerErrorException();
         }
 
     }
@@ -95,7 +95,7 @@ public class PlaylistDAO implements IPlaylistDAO {
             statement.executeUpdate();
 
         } catch (SQLException exception) {
-            exception.printStackTrace();
+            throw new InternalServerErrorException();
         }
     }
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ITrackDAO {
 
-    List<Track> getAllAvailableTracks(int playlistId);
+    List<Track> getAllAvailableTracksForPlaylist(int playlistId);
 
     List<Track> getAllTracksFromPlaylist(int playlistId);
 

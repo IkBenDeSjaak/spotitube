@@ -5,6 +5,7 @@ import han.oose.dea.exceptions.UsernamePasswordCombinationNotFoundException;
 import javax.annotation.Resource;
 import javax.enterprise.inject.Default;
 import javax.sql.DataSource;
+import javax.ws.rs.InternalServerErrorException;
 import java.sql.*;
 
 @Default
@@ -30,11 +31,10 @@ public class UserDAO implements IUserDAO {
 
             throw new UsernamePasswordCombinationNotFoundException();
 
-        } catch (SQLException exception) {
-            exception.printStackTrace();
-        }
 
-        return null;
+        } catch (SQLException exception) {
+            throw new InternalServerErrorException();
+        }
     }
 
     public void setDataSource(DataSource dataSource) {

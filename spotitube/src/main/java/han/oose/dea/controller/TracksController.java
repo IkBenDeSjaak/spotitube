@@ -26,7 +26,7 @@ public class TracksController {
 
         tokenService.verifyToken(token);
 
-        TracksDTO tracksDTO = tracksService.getAllAvailableTracks(forPlaylistId);
+        TracksDTO tracksDTO = tracksService.getAllAvailableTracksForPlaylist(forPlaylistId);
 
         return Response.status(Response.Status.OK).entity(tracksDTO).build();
     }

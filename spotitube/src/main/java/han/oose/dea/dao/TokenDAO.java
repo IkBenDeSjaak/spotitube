@@ -5,6 +5,7 @@ import han.oose.dea.exceptions.InvalidTokenException;
 import javax.annotation.Resource;
 import javax.enterprise.inject.Default;
 import javax.sql.DataSource;
+import javax.ws.rs.InternalServerErrorException;
 import java.sql.*;
 
 @Default
@@ -25,7 +26,7 @@ public class TokenDAO implements ITokenDAO {
             statement.executeUpdate();
 
         } catch (SQLException exception) {
-            exception.printStackTrace();
+            throw new InternalServerErrorException();
         }
     }
 
@@ -47,10 +48,9 @@ public class TokenDAO implements ITokenDAO {
             throw new InvalidTokenException();
 
         } catch (SQLException exception) {
-            exception.printStackTrace();
+            throw new InternalServerErrorException();
         }
 
-        return null;
     }
 
     public void setDataSource(DataSource dataSource) {
