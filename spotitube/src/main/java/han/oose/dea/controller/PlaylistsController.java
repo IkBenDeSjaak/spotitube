@@ -90,7 +90,7 @@ public class PlaylistsController {
     }
 
     private boolean isPlaylistDTOSet(PlaylistDTO playlistDTO) {
-        if (playlistDTO.name == null) {
+        if (playlistDTO == null || playlistDTO.name == null) {
             return false;
         } else {
             return true;

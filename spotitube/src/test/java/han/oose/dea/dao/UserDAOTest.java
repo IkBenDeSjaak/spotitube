@@ -17,10 +17,10 @@ import static org.mockito.Mockito.*;
 
 public class UserDAOTest {
 
+    private String expectedSQL = "SELECT password FROM users WHERE username = ?";
+
     private final String USERNAME = "sjaak";
     private final String HASHED_PASSWORD = "1x2x3x";
-
-    private String expectedSQL = "SELECT password FROM users WHERE username = ?";
 
     private UserDAO userDAO;
     private DataSource dataSource;
@@ -88,7 +88,8 @@ public class UserDAOTest {
             when(preparedStatement.executeQuery()).thenReturn(resultSet);
             when(resultSet.next()).thenReturn(false);
 
-            assertThrows(UsernamePasswordCombinationNotFoundException.class, () -> userDAO.getHashedPassword(USERNAME));
+            assertThrows(UsernamePasswordCombinationNotFoundException.class,
+                    () -> userDAO.getHashedPassword(USERNAME));
 
         } catch (Exception e) {
             fail();

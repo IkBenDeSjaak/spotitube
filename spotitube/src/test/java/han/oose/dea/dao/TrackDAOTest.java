@@ -51,7 +51,8 @@ public class TrackDAOTest {
     @Test
     public void getAllAvailableTracksForPlaylistTest() {
         try {
-            expectedSQL = "SELECT * FROM tracks t LEFT OUTER JOIN playlist_tracks pt ON t.id = pt.trackId WHERE t.id NOT IN (SELECT trackId FROM playlist_tracks WHERE playlistId = ?)";
+            expectedSQL = "SELECT * FROM tracks t LEFT OUTER JOIN playlist_tracks pt ON t.id = pt.trackId " +
+                    "WHERE t.id NOT IN (SELECT trackId FROM playlist_tracks WHERE playlistId = ?)";
 
             when(dataSource.getConnection()).thenReturn(connection);
             when(connection.prepareStatement(expectedSQL)).thenReturn(preparedStatement);
@@ -92,12 +93,14 @@ public class TrackDAOTest {
     @Test
     public void getAllAvailableTracksForPlaylistThrowsInternalServerErrorExceptionTest() {
         try {
-            expectedSQL = "SELECT * FROM tracks t LEFT OUTER JOIN playlist_tracks pt ON t.id = pt.trackId WHERE t.id NOT IN (SELECT trackId FROM playlist_tracks WHERE playlistId = ?)";
+            expectedSQL = "SELECT * FROM tracks t LEFT OUTER JOIN playlist_tracks pt ON t.id = pt.trackId " +
+                    "WHERE t.id NOT IN (SELECT trackId FROM playlist_tracks WHERE playlistId = ?)";
 
             when(dataSource.getConnection()).thenReturn(connection);
             when(connection.prepareStatement(expectedSQL)).thenThrow(new SQLException());
 
-            assertThrows(InternalServerErrorException.class, () -> trackDAO.getAllAvailableTracksForPlaylist(PLAYLIST_ID));
+            assertThrows(InternalServerErrorException.class,
+                    () -> trackDAO.getAllAvailableTracksForPlaylist(PLAYLIST_ID));
         } catch (Exception e) {
             fail();
         }
@@ -106,7 +109,8 @@ public class TrackDAOTest {
     @Test
     public void getAllTracksFromPlaylistTest() {
         try {
-            expectedSQL = "SELECT * FROM tracks t INNER JOIN playlist_tracks pt ON t.id = pt.trackId WHERE pt.playlistId = ?";
+            expectedSQL = "SELECT * FROM tracks t INNER JOIN playlist_tracks pt ON t.id = pt.trackId " +
+                    "WHERE pt.playlistId = ?";
 
             when(dataSource.getConnection()).thenReturn(connection);
             when(connection.prepareStatement(expectedSQL)).thenReturn(preparedStatement);
@@ -147,12 +151,14 @@ public class TrackDAOTest {
     @Test
     public void getAllTracksFromPlaylistThrowsInternalServerErrorExceptionTest() {
         try {
-            expectedSQL = "SELECT * FROM tracks t INNER JOIN playlist_tracks pt ON t.id = pt.trackId WHERE pt.playlistId = ?";
+            expectedSQL = "SELECT * FROM tracks t INNER JOIN playlist_tracks pt ON t.id = pt.trackId " +
+                    "WHERE pt.playlistId = ?";
 
             when(dataSource.getConnection()).thenReturn(connection);
             when(connection.prepareStatement(expectedSQL)).thenThrow(new SQLException());
 
-            assertThrows(InternalServerErrorException.class, () -> trackDAO.getAllTracksFromPlaylist(PLAYLIST_ID));
+            assertThrows(InternalServerErrorException.class,
+                    () -> trackDAO.getAllTracksFromPlaylist(PLAYLIST_ID));
         } catch (Exception e) {
             fail();
         }
@@ -187,7 +193,8 @@ public class TrackDAOTest {
             when(dataSource.getConnection()).thenReturn(connection);
             when(connection.prepareStatement(expectedSQL)).thenThrow(new SQLException());
 
-            assertThrows(InternalServerErrorException.class, () -> trackDAO.deleteTrackFromPlaylist(PLAYLIST_ID, TRACK_ID));
+            assertThrows(InternalServerErrorException.class,
+                    () -> trackDAO.deleteTrackFromPlaylist(PLAYLIST_ID, TRACK_ID));
         } catch (Exception e) {
             fail();
         }
@@ -196,7 +203,8 @@ public class TrackDAOTest {
     @Test
     public void addTrackToPlaylistTest() {
         try {
-            expectedSQL = "INSERT INTO playlist_tracks (playlistId, trackId, offlineAvailable) VALUES (?, ?, ?)";
+            expectedSQL = "INSERT INTO playlist_tracks (playlistId, trackId, offlineAvailable) " +
+                    "VALUES (?, ?, ?)";
 
             when(dataSource.getConnection()).thenReturn(connection);
             when(connection.prepareStatement(expectedSQL)).thenReturn(preparedStatement);
@@ -218,12 +226,14 @@ public class TrackDAOTest {
     @Test
     public void addTrackToPlaylistThrowsInternalServerErrorExceptionTest() {
         try {
-            expectedSQL = "INSERT INTO playlist_tracks (playlistId, trackId, offlineAvailable) VALUES (?, ?, ?)";
+            expectedSQL = "INSERT INTO playlist_tracks (playlistId, trackId, offlineAvailable) " +
+                    "VALUES (?, ?, ?)";
 
             when(dataSource.getConnection()).thenReturn(connection);
             when(connection.prepareStatement(expectedSQL)).thenThrow(new SQLException());
 
-            assertThrows(InternalServerErrorException.class, () -> trackDAO.addTrackToPlaylist(PLAYLIST_ID, TRACK_ID, TRACK_OFFLINE_AVAILABLE));
+            assertThrows(InternalServerErrorException.class,
+                    () -> trackDAO.addTrackToPlaylist(PLAYLIST_ID, TRACK_ID, TRACK_OFFLINE_AVAILABLE));
         } catch (Exception e) {
             fail();
         }
@@ -257,7 +267,8 @@ public class TrackDAOTest {
             when(dataSource.getConnection()).thenReturn(connection);
             when(connection.prepareStatement(expectedSQL)).thenThrow(new SQLException());
 
-            assertThrows(InternalServerErrorException.class, () -> trackDAO.deleteAllTracksFromPlaylist(PLAYLIST_ID));
+            assertThrows(InternalServerErrorException.class,
+                    () -> trackDAO.deleteAllTracksFromPlaylist(PLAYLIST_ID));
         } catch (Exception e) {
             fail();
         }

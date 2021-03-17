@@ -21,7 +21,8 @@ public class TrackDAO implements ITrackDAO {
     public List<Track> getAllAvailableTracksForPlaylist(int playlistId) {
 
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "SELECT * FROM tracks t LEFT OUTER JOIN playlist_tracks pt ON t.id = pt.trackId WHERE t.id NOT IN (SELECT trackId FROM playlist_tracks WHERE playlistId = ?)";
+            String sql = "SELECT * FROM tracks t LEFT OUTER JOIN playlist_tracks pt ON t.id = pt.trackId " +
+                    "WHERE t.id NOT IN (SELECT trackId FROM playlist_tracks WHERE playlistId = ?)";
 
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, playlistId);
@@ -58,7 +59,8 @@ public class TrackDAO implements ITrackDAO {
     public List<Track> getAllTracksFromPlaylist(int playlistId) {
 
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "SELECT * FROM tracks t INNER JOIN playlist_tracks pt ON t.id = pt.trackId WHERE pt.playlistId = ?";
+            String sql = "SELECT * FROM tracks t INNER JOIN playlist_tracks pt ON t.id = pt.trackId " +
+                    "WHERE pt.playlistId = ?";
 
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, playlistId);
@@ -112,7 +114,8 @@ public class TrackDAO implements ITrackDAO {
     public void addTrackToPlaylist(int playlistId, int trackId, boolean offlineAvailable) {
 
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "INSERT INTO playlist_tracks (playlistId, trackId, offlineAvailable) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO playlist_tracks (playlistId, trackId, offlineAvailable) " +
+                    "VALUES (?, ?, ?)";
 
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, playlistId);

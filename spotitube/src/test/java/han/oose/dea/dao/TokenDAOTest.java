@@ -17,10 +17,10 @@ import static org.mockito.Mockito.verify;
 
 public class TokenDAOTest {
 
+    private String expectedSQL;
+
     private final String USERNAME = "sjaak";
     private final String TOKEN = "12345";
-
-    private String expectedSQL;
 
     private TokenDAO tokenDAO;
     private DataSource dataSource;

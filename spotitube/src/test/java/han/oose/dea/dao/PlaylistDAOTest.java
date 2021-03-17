@@ -48,7 +48,9 @@ public class PlaylistDAOTest {
     public void getAllPlaylistsTest() {
         try {
             //Arrange
-            expectedSQL = "SELECT DISTINCT p.id AS id, p.name AS name, p.owner AS owner, (SELECT SUM(duration) FROM tracks t INNER JOIN playlist_tracks pt ON t.id = pt.trackID WHERE p.id = pt.playlistId ) AS duration " +
+            expectedSQL = "SELECT DISTINCT p.id AS id, p.name AS name, p.owner AS owner, " +
+                    "(SELECT SUM(duration) FROM tracks t INNER JOIN playlist_tracks pt " +
+                    "ON t.id = pt.trackID WHERE p.id = pt.playlistId ) AS duration " +
                     "FROM playlists AS p " +
                     "LEFT OUTER JOIN playlist_tracks AS pt " +
                     "ON p.id = pt.playlistId";
@@ -85,7 +87,9 @@ public class PlaylistDAOTest {
     public void getAllPlaylistsThrowsInternalServerErrorExceptionTest() {
         try {
             //Arrange
-            expectedSQL = "SELECT DISTINCT p.id AS id, p.name AS name, p.owner AS owner, (SELECT SUM(duration) FROM tracks t INNER JOIN playlist_tracks pt ON t.id = pt.trackID WHERE p.id = pt.playlistId ) AS duration " +
+            expectedSQL = "SELECT DISTINCT p.id AS id, p.name AS name, p.owner AS owner, " +
+                    "(SELECT SUM(duration) FROM tracks t INNER JOIN playlist_tracks pt " +
+                    "ON t.id = pt.trackID WHERE p.id = pt.playlistId ) AS duration " +
                     "FROM playlists AS p " +
                     "LEFT OUTER JOIN playlist_tracks AS pt " +
                     "ON p.id = pt.playlistId";
@@ -166,7 +170,8 @@ public class PlaylistDAOTest {
             when(dataSource.getConnection()).thenReturn(connection);
             when(connection.prepareStatement(expectedSQL)).thenThrow(new SQLException());
 
-            assertThrows(InternalServerErrorException.class, () -> playlistDAO.addPlaylist(PLAYLIST_NAME, USERNAME));
+            assertThrows(InternalServerErrorException.class,
+                    () -> playlistDAO.addPlaylist(PLAYLIST_NAME, USERNAME));
         } catch (Exception e) {
             fail();
         }
@@ -202,7 +207,8 @@ public class PlaylistDAOTest {
             when(dataSource.getConnection()).thenReturn(connection);
             when(connection.prepareStatement(expectedSQL)).thenThrow(new SQLException());
 
-            assertThrows(InternalServerErrorException.class, () -> playlistDAO.editPlaylist(PLAYLIST_ID, PLAYLIST_NAME));
+            assertThrows(InternalServerErrorException.class,
+                    () -> playlistDAO.editPlaylist(PLAYLIST_ID, PLAYLIST_NAME));
         } catch (Exception e) {
             fail();
         }

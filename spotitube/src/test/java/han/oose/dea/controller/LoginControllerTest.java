@@ -18,6 +18,7 @@ public class LoginControllerTest {
     private final String USERNAME = "Sjaak";
     private final String PASSWORD = "secret";
     private final String TOKEN = "12345";
+
     private final int STATUS_CREATED = 201;
 
     private LoginController loginController;

@@ -21,7 +21,9 @@ public class PlaylistDAO implements IPlaylistDAO {
     public List<Playlist> getAllPlaylists(String username) {
 
         try (Connection connection = dataSource.getConnection()) {
-            String sql = "SELECT DISTINCT p.id AS id, p.name AS name, p.owner AS owner, (SELECT SUM(duration) FROM tracks t INNER JOIN playlist_tracks pt ON t.id = pt.trackID WHERE p.id = pt.playlistId ) AS duration " +
+            String sql = "SELECT DISTINCT p.id AS id, p.name AS name, p.owner AS owner, " +
+                    "(SELECT SUM(duration) FROM tracks t INNER JOIN playlist_tracks pt " +
+                    "ON t.id = pt.trackID WHERE p.id = pt.playlistId ) AS duration " +
                     "FROM playlists AS p " +
                     "LEFT OUTER JOIN playlist_tracks AS pt " +
                     "ON p.id = pt.playlistId";
