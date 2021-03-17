@@ -9,10 +9,6 @@ public class TokenService {
 
     private ITokenDAO tokenDAO;
 
-    public String getToken(String username) {
-        return tokenDAO.getToken(username);
-    }
-
     public String generateToken() {
         return UUID.randomUUID().toString();
     }
