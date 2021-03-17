@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import javax.sql.DataSource;
 import javax.ws.rs.InternalServerErrorException;
-import java.awt.desktop.OpenFilesEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -85,7 +84,7 @@ public class TrackDAOTest {
             assertEquals(TRACK_PUBLICATION_DATE, resultTracksList.get(0).getPublicationDate());
             assertEquals(TRACK_DESCRIPTION, resultTracksList.get(0).getDescription());
             assertEquals(TRACK_OFFLINE_AVAILABLE, resultTracksList.get(0).isOfflineAvailable());
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail();
         }
     }
@@ -99,7 +98,7 @@ public class TrackDAOTest {
             when(connection.prepareStatement(expectedSQL)).thenThrow(new SQLException());
 
             assertThrows(InternalServerErrorException.class, () -> trackDAO.getAllAvailableTracksForPlaylist(PLAYLIST_ID));
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail();
         }
     }
@@ -140,7 +139,7 @@ public class TrackDAOTest {
             assertEquals(TRACK_PUBLICATION_DATE, resultTracksList.get(0).getPublicationDate());
             assertEquals(TRACK_DESCRIPTION, resultTracksList.get(0).getDescription());
             assertEquals(TRACK_OFFLINE_AVAILABLE, resultTracksList.get(0).isOfflineAvailable());
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail();
         }
     }
@@ -154,7 +153,7 @@ public class TrackDAOTest {
             when(connection.prepareStatement(expectedSQL)).thenThrow(new SQLException());
 
             assertThrows(InternalServerErrorException.class, () -> trackDAO.getAllTracksFromPlaylist(PLAYLIST_ID));
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail();
         }
     }
@@ -175,7 +174,7 @@ public class TrackDAOTest {
             verify(preparedStatement).setInt(1, PLAYLIST_ID);
             verify(preparedStatement).setInt(2, TRACK_ID);
             verify(preparedStatement).executeUpdate();
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail();
         }
     }
@@ -189,7 +188,7 @@ public class TrackDAOTest {
             when(connection.prepareStatement(expectedSQL)).thenThrow(new SQLException());
 
             assertThrows(InternalServerErrorException.class, () -> trackDAO.deleteTrackFromPlaylist(PLAYLIST_ID, TRACK_ID));
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail();
         }
     }
@@ -211,7 +210,7 @@ public class TrackDAOTest {
             verify(preparedStatement).setInt(2, TRACK_ID);
             verify(preparedStatement).setBoolean(3, TRACK_OFFLINE_AVAILABLE);
             verify(preparedStatement).executeUpdate();
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail();
         }
     }
@@ -225,7 +224,7 @@ public class TrackDAOTest {
             when(connection.prepareStatement(expectedSQL)).thenThrow(new SQLException());
 
             assertThrows(InternalServerErrorException.class, () -> trackDAO.addTrackToPlaylist(PLAYLIST_ID, TRACK_ID, TRACK_OFFLINE_AVAILABLE));
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail();
         }
     }
@@ -245,7 +244,7 @@ public class TrackDAOTest {
             verify(connection).prepareStatement(expectedSQL);
             verify(preparedStatement).setInt(1, PLAYLIST_ID);
             verify(preparedStatement).executeUpdate();
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail();
         }
     }
@@ -259,7 +258,7 @@ public class TrackDAOTest {
             when(connection.prepareStatement(expectedSQL)).thenThrow(new SQLException());
 
             assertThrows(InternalServerErrorException.class, () -> trackDAO.deleteAllTracksFromPlaylist(PLAYLIST_ID));
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail();
         }
     }

@@ -62,7 +62,7 @@ public class UserDAOTest {
 
             assertEquals(expectedResult, result);
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail();
         }
     }
@@ -75,7 +75,7 @@ public class UserDAOTest {
 
             assertThrows(InternalServerErrorException.class, () -> userDAO.getHashedPassword(USERNAME));
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail();
         }
     }
@@ -90,7 +90,7 @@ public class UserDAOTest {
 
             assertThrows(UsernamePasswordCombinationNotFoundException.class, () -> userDAO.getHashedPassword(USERNAME));
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail();
         }
     }

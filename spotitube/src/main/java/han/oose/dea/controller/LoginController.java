@@ -14,12 +14,6 @@ public class LoginController {
 
     private LoginService loginService;
 
-    @GET
-    @Path("hi")
-    public String helloWorld() {
-        return "May the force be with you!";
-    }
-
     @POST
     @Path("")
     @Consumes(MediaType.APPLICATION_JSON)

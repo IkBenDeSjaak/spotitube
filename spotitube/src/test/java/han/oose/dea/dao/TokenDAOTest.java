@@ -63,7 +63,7 @@ public class TokenDAOTest {
 
             assertEquals(expectedResult, result);
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail();
         }
     }
@@ -78,7 +78,7 @@ public class TokenDAOTest {
 
             assertThrows(InternalServerErrorException.class, () -> tokenDAO.verifyToken(TOKEN));
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail();
         }
     }
@@ -95,7 +95,7 @@ public class TokenDAOTest {
 
             assertThrows(InvalidTokenException.class, () -> tokenDAO.verifyToken(TOKEN));
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail();
         }
     }
@@ -116,7 +116,7 @@ public class TokenDAOTest {
             verify(preparedStatement).setString(1, TOKEN);
             verify(preparedStatement).setString(2, USERNAME);
             verify(preparedStatement).executeUpdate();
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail();
         }
     }
@@ -130,7 +130,7 @@ public class TokenDAOTest {
             when(connection.prepareStatement(expectedSQL)).thenThrow(new SQLException());
 
             assertThrows(InternalServerErrorException.class, () -> tokenDAO.updateToken(USERNAME, TOKEN));
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail();
         }
     }
