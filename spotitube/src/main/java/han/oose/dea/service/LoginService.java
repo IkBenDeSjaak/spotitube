@@ -1,6 +1,5 @@
 package han.oose.dea.service;
 
-import han.oose.dea.controller.dto.TokenDTO;
 import han.oose.dea.domain.Token;
 import han.oose.dea.exceptions.PasswordIsNotCorrectException;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -38,7 +37,7 @@ public class LoginService {
     }
 
     @Inject
-    public void setLoginService(TokenService tokenService) {
+    public void setTokenService(TokenService tokenService) {
         this.tokenService = tokenService;
     }
 

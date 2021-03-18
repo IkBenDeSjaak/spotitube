@@ -25,14 +25,16 @@ public class LoginControllerTest {
 
     private LoginController loginController;
     private LoginService loginService;
-
+    private MapToDTO mapToDTO;
 
     @BeforeEach
     public void setup() {
         loginService = mock(LoginService.class);
+        mapToDTO = mock(MapToDTO.class);
 
         loginController = new LoginController();
         loginController.setLoginService(loginService);
+        loginController.setMapToDTO(mapToDTO);
     }
 
     @Test
@@ -51,11 +53,13 @@ public class LoginControllerTest {
             token.setUser(USERNAME);
 
             when(loginService.login(USERNAME, PASSWORD)).thenReturn(token);
+            when(mapToDTO.mapTokenToDTO(token)).thenReturn(tokenDTO);
 
             Response response = loginController.login(userDTO);
             TokenDTO tokenDTOResponse = (TokenDTO) response.getEntity();
 
             verify(loginService).login(USERNAME, PASSWORD);
+            verify(mapToDTO).mapTokenToDTO(token);
 
             assertEquals(STATUS_CREATED, response.getStatus());
             assertEquals(USERNAME, tokenDTOResponse.user);

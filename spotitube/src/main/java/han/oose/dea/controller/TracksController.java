@@ -39,7 +39,7 @@ public class TracksController {
     @GET
     @Path("playlists/{playlistId}/tracks")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllTracksForPlaylist(@PathParam("playlistId") int playlistId, @QueryParam("token") String token) {
+    public Response getAllTracksFromPlaylist(@PathParam("playlistId") int playlistId, @QueryParam("token") String token) {
         if (!isPlaylistIdSet(playlistId) || !isTokenSet(token)) {
             throw new BadRequestException();
         }
@@ -106,7 +106,7 @@ public class TracksController {
     }
 
     private boolean isTrackDTOSet(TrackDTO trackDTO) {
-        if (trackDTO.id == 0) {
+        if (trackDTO == null || trackDTO.id == 0) {
             return false;
         } else {
             return true;

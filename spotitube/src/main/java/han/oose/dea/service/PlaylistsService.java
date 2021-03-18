@@ -1,12 +1,9 @@
 package han.oose.dea.service;
 
-import han.oose.dea.controller.dto.PlaylistDTO;
-import han.oose.dea.controller.dto.PlaylistsDTO;
 import han.oose.dea.dao.IPlaylistDAO;
 import han.oose.dea.domain.Playlist;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PlaylistsService {
@@ -15,8 +12,7 @@ public class PlaylistsService {
     private TracksService tracksService;
 
     public List<Playlist> getAllPlaylists(String username) {
-        List<Playlist> playlists = playlistDAO.getAllPlaylists(username);
-        return playlists;
+        return playlistDAO.getAllPlaylists(username);
     }
 
     public void deletePlaylist(int playlistId) {

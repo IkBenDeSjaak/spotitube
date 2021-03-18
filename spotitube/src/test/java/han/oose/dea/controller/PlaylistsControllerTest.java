@@ -2,9 +2,9 @@ package han.oose.dea.controller;
 
 import han.oose.dea.controller.dto.PlaylistDTO;
 import han.oose.dea.controller.dto.PlaylistsDTO;
-import han.oose.dea.controller.dto.TokenDTO;
 import han.oose.dea.controller.mappers.MapToDTO;
 import han.oose.dea.domain.Playlist;
+import han.oose.dea.exceptions.InvalidTokenException;
 import han.oose.dea.service.PlaylistsService;
 import han.oose.dea.service.TokenService;
 import org.junit.jupiter.api.BeforeEach;
@@ -91,7 +91,6 @@ public class PlaylistsControllerTest {
 
             assertEquals(STATUS_OK, response.getStatus());
             assertEquals(playlistsDTO.length, playlistsDTOResponse.length);
-
         } catch (Exception e) {
             fail();
         }
