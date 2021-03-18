@@ -1,4 +1,4 @@
-package han.oose.dea.resources.mappers;
+package han.oose.dea.resources.dtomappers;
 
 import han.oose.dea.resources.dto.*;
 import han.oose.dea.domain.Playlist;

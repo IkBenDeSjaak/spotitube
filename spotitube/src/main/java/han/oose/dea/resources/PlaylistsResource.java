@@ -2,7 +2,7 @@ package han.oose.dea.resources;
 
 import han.oose.dea.resources.dto.PlaylistDTO;
 import han.oose.dea.resources.dto.PlaylistsDTO;
-import han.oose.dea.resources.mappers.MapToDTO;
+import han.oose.dea.resources.dtomappers.MapToDTO;
 import han.oose.dea.domain.Playlist;
 import han.oose.dea.services.PlaylistsService;
 import han.oose.dea.services.TokenService;

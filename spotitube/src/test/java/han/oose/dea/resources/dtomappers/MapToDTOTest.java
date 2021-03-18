@@ -1,4 +1,4 @@
-package han.oose.dea.resources.mappers;
+package han.oose.dea.resources.dtomappers;
 
 import han.oose.dea.resources.dto.PlaylistsDTO;
 import han.oose.dea.resources.dto.TokenDTO;

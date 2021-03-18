@@ -2,7 +2,7 @@ package han.oose.dea.resources;
 
 import han.oose.dea.resources.dto.TrackDTO;
 import han.oose.dea.resources.dto.TracksDTO;
-import han.oose.dea.resources.mappers.MapToDTO;
+import han.oose.dea.resources.dtomappers.MapToDTO;
 import han.oose.dea.domain.Track;
 import han.oose.dea.services.TokenService;
 import han.oose.dea.services.TracksService;

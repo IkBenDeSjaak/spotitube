@@ -2,7 +2,7 @@ package han.oose.dea.resources;
 
 import han.oose.dea.resources.dto.TokenDTO;
 import han.oose.dea.resources.dto.UserDTO;
-import han.oose.dea.resources.mappers.MapToDTO;
+import han.oose.dea.resources.dtomappers.MapToDTO;
 import han.oose.dea.domain.Token;
 import han.oose.dea.services.LoginService;
 
