@@ -1,4 +1,4 @@
-package han.oose.dea.controller.dto;
+package han.oose.dea.resources.dto;
 
 public class TrackDTO {
     public int id;

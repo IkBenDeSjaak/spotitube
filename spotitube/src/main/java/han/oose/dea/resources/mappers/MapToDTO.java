@@ -1,6 +1,6 @@
-package han.oose.dea.controller.mappers;
+package han.oose.dea.resources.mappers;
 
-import han.oose.dea.controller.dto.*;
+import han.oose.dea.resources.dto.*;
 import han.oose.dea.domain.Playlist;
 import han.oose.dea.domain.Token;
 import han.oose.dea.domain.Track;

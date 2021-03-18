@@ -1,4 +1,4 @@
-package han.oose.dea.controller.dto;
+package han.oose.dea.resources.dto;
 
 import java.util.List;
 
