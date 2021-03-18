@@ -54,7 +54,7 @@ public class TracksControllerTest {
     public void getAllAvailableTracksTest() {
         try {
             when(tokenService.verifyToken(TOKEN)).thenReturn(USERNAME);
-            when(tracksService.getAllAvailableTracksForPlaylist(PLAYLIST_ID)).thenReturn(tracksDTO);
+           // when(tracksService.getAllAvailableTracksForPlaylist(PLAYLIST_ID)).thenReturn(tracksDTO);
 
             Response response = tracksController.getAllAvailableTracks(PLAYLIST_ID, TOKEN);
             TracksDTO tracksDTOResponse = (TracksDTO) response.getEntity();
@@ -85,7 +85,7 @@ public class TracksControllerTest {
     public void getAllTracksForPlaylistTest() {
         try {
             when(tokenService.verifyToken(TOKEN)).thenReturn(USERNAME);
-            when(tracksService.getAllTracksFromPlaylist(PLAYLIST_ID)).thenReturn(tracksDTO);
+            //when(tracksService.getAllTracksFromPlaylist(PLAYLIST_ID)).thenReturn(tracksDTO);
 
             Response response = tracksController.getAllTracksForPlaylist(PLAYLIST_ID, TOKEN);
             TracksDTO tracksDTOResponse = (TracksDTO) response.getEntity();
@@ -116,7 +116,7 @@ public class TracksControllerTest {
     public void deleteTrackFromPlaylistTest() {
         try {
             when(tokenService.verifyToken(TOKEN)).thenReturn(USERNAME);
-            when(tracksService.getAllTracksFromPlaylist(PLAYLIST_ID)).thenReturn(tracksDTO);
+            ///when(tracksService.getAllTracksFromPlaylist(PLAYLIST_ID)).thenReturn(tracksDTO);
 
             Response response = tracksController.deleteTrackFromPlaylist(PLAYLIST_ID, TRACK_ID, TOKEN);
             TracksDTO tracksDTOResponse = (TracksDTO) response.getEntity();
@@ -153,7 +153,7 @@ public class TracksControllerTest {
 
         try {
             when(tokenService.verifyToken(TOKEN)).thenReturn(USERNAME);
-            when(tracksService.getAllTracksFromPlaylist(PLAYLIST_ID)).thenReturn(tracksDTO);
+           // when(tracksService.getAllTracksFromPlaylist(PLAYLIST_ID)).thenReturn(tracksDTO);
 
             Response response = tracksController.addTrackToPlaylist(trackDTO, PLAYLIST_ID, TOKEN);
             TracksDTO tracksDTOResponse = (TracksDTO) response.getEntity();

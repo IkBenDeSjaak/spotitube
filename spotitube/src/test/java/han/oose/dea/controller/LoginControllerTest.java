@@ -42,7 +42,7 @@ public class LoginControllerTest {
             tokenDTO.user = USERNAME;
             tokenDTO.token = TOKEN;
 
-            when(loginService.login(USERNAME, PASSWORD)).thenReturn(tokenDTO);
+//            when(loginService.login(USERNAME, PASSWORD)).thenReturn(tokenDTO);
 
             Response response = loginController.login(userDTO);
             TokenDTO tokenDTOResponse = (TokenDTO) response.getEntity();

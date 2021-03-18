@@ -2,6 +2,8 @@ package han.oose.dea.controller;
 
 import han.oose.dea.controller.dto.PlaylistDTO;
 import han.oose.dea.controller.dto.PlaylistsDTO;
+import han.oose.dea.controller.mappers.MapToDTO;
+import han.oose.dea.domain.Playlist;
 import han.oose.dea.service.PlaylistsService;
 import han.oose.dea.service.TokenService;
 
@@ -9,12 +11,14 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 @Path("")
 public class PlaylistsController {
 
     private PlaylistsService playlistsService;
     private TokenService tokenService;
+    private MapToDTO mapToDTO = new MapToDTO();
 
     @GET
     @Path("playlists")
@@ -26,7 +30,8 @@ public class PlaylistsController {
 
         String username = tokenService.verifyToken(token);
 
-        PlaylistsDTO playlistsDTO = playlistsService.getAllPlaylists(username);
+        List<Playlist> playlists = playlistsService.getAllPlaylists(username);
+        PlaylistsDTO playlistsDTO = mapToDTO.mapPlaylistsToDTO(playlists, username);
 
         return Response.status(Response.Status.OK).entity(playlistsDTO).build();
     }
@@ -42,7 +47,9 @@ public class PlaylistsController {
         String username = tokenService.verifyToken(token);
 
         playlistsService.deletePlaylist(playlistId);
-        PlaylistsDTO playlistsDTO = playlistsService.getAllPlaylists(username);
+
+        List<Playlist> playlists = playlistsService.getAllPlaylists(username);
+        PlaylistsDTO playlistsDTO = mapToDTO.mapPlaylistsToDTO(playlists, username);
 
         return Response.status(Response.Status.OK).entity(playlistsDTO).build();
     }
@@ -59,7 +66,9 @@ public class PlaylistsController {
         String username = tokenService.verifyToken(token);
 
         playlistsService.addPlaylist(playlistDTO.name, username);
-        PlaylistsDTO playlistsDTO = playlistsService.getAllPlaylists(username);
+
+        List<Playlist> playlists = playlistsService.getAllPlaylists(username);
+        PlaylistsDTO playlistsDTO = mapToDTO.mapPlaylistsToDTO(playlists, username);
 
         return Response.status(Response.Status.CREATED).entity(playlistsDTO).build();
     }
@@ -76,7 +85,9 @@ public class PlaylistsController {
         String username = tokenService.verifyToken(token);
 
         playlistsService.editPlaylist(playlistId, playlistDTO.name);
-        PlaylistsDTO playlistsDTO = playlistsService.getAllPlaylists(username);
+
+        List<Playlist> playlists = playlistsService.getAllPlaylists(username);
+        PlaylistsDTO playlistsDTO = mapToDTO.mapPlaylistsToDTO(playlists, username);
 
         return Response.status(Response.Status.OK).entity(playlistsDTO).build();
     }

@@ -13,16 +13,14 @@ public class TracksService {
 
     private ITrackDAO trackDAO;
 
-    public TracksDTO getAllAvailableTracksForPlaylist(int playlistId) {
+    public List<Track> getAllAvailableTracksForPlaylist(int playlistId) {
         List<Track> tracks = trackDAO.getAllAvailableTracksForPlaylist(playlistId);
-        TracksDTO tracksDTO = convertTracksListToTracksDTO(tracks);
-        return tracksDTO;
+        return tracks;
     }
 
-    public TracksDTO getAllTracksFromPlaylist(int playlistId) {
+    public List<Track> getAllTracksFromPlaylist(int playlistId) {
         List<Track> tracks = trackDAO.getAllTracksFromPlaylist(playlistId);
-        TracksDTO tracksDTO = convertTracksListToTracksDTO(tracks);
-        return tracksDTO;
+        return tracks;
     }
 
     public void deleteTrackFromPlaylist(int playlistId, int trackId) {
@@ -37,27 +35,6 @@ public class TracksService {
         trackDAO.deleteAllTracksFromPlaylist(playlistId);
     }
 
-    private TracksDTO convertTracksListToTracksDTO(List<Track> tracks) {
-        TracksDTO tracksDTO = new TracksDTO();
-        tracksDTO.tracks = new ArrayList<>();
-
-        for (Track track : tracks) {
-            TrackDTO trackDTO = new TrackDTO();
-            trackDTO.id = track.getId();
-            trackDTO.title = track.getTitle();
-            trackDTO.performer = track.getPerformer();
-            trackDTO.duration = track.getDuration();
-            trackDTO.album = track.getAlbum();
-            trackDTO.playcount = track.getPlaycount();
-            trackDTO.publicationDate = track.getPublicationDate();
-            trackDTO.description = track.getDescription();
-            trackDTO.offlineAvailable = track.isOfflineAvailable();
-
-            tracksDTO.tracks.add(trackDTO);
-        }
-
-        return tracksDTO;
-    }
 
     @Inject
     public void setTrackDAO(ITrackDAO trackDAO) {

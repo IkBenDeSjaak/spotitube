@@ -63,7 +63,7 @@ public class PlaylistsControllerTest {
     public void getAllPlaylistsTest() {
         try {
             when(tokenService.verifyToken(TOKEN)).thenReturn(USERNAME);
-            when(playlistsService.getAllPlaylists(USERNAME)).thenReturn(playlistsDTO);
+            //when(playlistsService.getAllPlaylists(USERNAME)).thenReturn(playlistsDTO);
 
             Response response = playlistsController.getAllPlaylists(TOKEN);
             PlaylistsDTO playlistsDTOResponse = (PlaylistsDTO) response.getEntity();
@@ -94,7 +94,7 @@ public class PlaylistsControllerTest {
     public void deletePlaylistTest() {
         try {
             when(tokenService.verifyToken(TOKEN)).thenReturn(USERNAME);
-            when(playlistsService.getAllPlaylists(USERNAME)).thenReturn(playlistsDTO);
+            //when(playlistsService.getAllPlaylists(USERNAME)).thenReturn(playlistsDTO);
 
             Response response = playlistsController.deletePlaylist(PLAYLIST_ID, TOKEN);
             PlaylistsDTO playlistsDTOResponse = (PlaylistsDTO) response.getEntity();
@@ -126,7 +126,7 @@ public class PlaylistsControllerTest {
     public void addPlaylistTest() {
         try {
             when(tokenService.verifyToken(TOKEN)).thenReturn(USERNAME);
-            when(playlistsService.getAllPlaylists(USERNAME)).thenReturn(playlistsDTO);
+            //when(playlistsService.getAllPlaylists(USERNAME)).thenReturn(playlistsDTO);
 
             Response response = playlistsController.addPlaylist(playlistDTO, TOKEN);
             PlaylistsDTO playlistsDTOResponse = (PlaylistsDTO) response.getEntity();
@@ -158,7 +158,7 @@ public class PlaylistsControllerTest {
     public void editPlaylistTest() {
         try {
             when(tokenService.verifyToken(TOKEN)).thenReturn(USERNAME);
-            when(playlistsService.getAllPlaylists(USERNAME)).thenReturn(playlistsDTO);
+            //when(playlistsService.getAllPlaylists(USERNAME)).thenReturn(playlistsDTO);
 
             Response response = playlistsController.editPlaylist(playlistDTO, PLAYLIST_ID, TOKEN);
             PlaylistsDTO playlistsDTOResponse = (PlaylistsDTO) response.getEntity();

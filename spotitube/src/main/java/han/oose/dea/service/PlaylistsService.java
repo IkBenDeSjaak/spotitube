@@ -14,10 +14,9 @@ public class PlaylistsService {
     private IPlaylistDAO playlistDAO;
     private TracksService tracksService;
 
-    public PlaylistsDTO getAllPlaylists(String username) {
+    public List<Playlist> getAllPlaylists(String username) {
         List<Playlist> playlists = playlistDAO.getAllPlaylists(username);
-        PlaylistsDTO playlistsDTO = convertPlaylistsListToPlaylistsDTO(playlists, username);
-        return playlistsDTO;
+        return playlists;
     }
 
     public void deletePlaylist(int playlistId) {
@@ -31,39 +30,6 @@ public class PlaylistsService {
 
     public void editPlaylist(int playlistId, String name) {
         playlistDAO.editPlaylist(playlistId, name);
-    }
-
-    private PlaylistsDTO convertPlaylistsListToPlaylistsDTO(List<Playlist> playlists, String username) {
-        PlaylistsDTO playlistsDTO = new PlaylistsDTO();
-        playlistsDTO.playlists = new ArrayList<>();
-
-        for (Playlist playlist : playlists) {
-            PlaylistDTO playlistDTO = new PlaylistDTO();
-            playlistDTO.id = playlist.getId();
-            playlistDTO.name = playlist.getName();
-            if (playlist.getOwner().equals(username)) {
-                playlistDTO.owner = true;
-            } else {
-                playlistDTO.owner = false;
-            }
-            playlistDTO.tracks = new ArrayList<>();
-
-            playlistsDTO.playlists.add(playlistDTO);
-        }
-
-        playlistsDTO.length = calculateTotalLength(playlists);
-
-        return playlistsDTO;
-    }
-
-    private int calculateTotalLength(List<Playlist> playlists) {
-        int totalLength = 0;
-
-        for(Playlist playlist : playlists) {
-            totalLength += playlist.getDuration();
-        }
-
-        return totalLength;
     }
 
     @Inject

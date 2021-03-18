@@ -2,6 +2,8 @@ package han.oose.dea.controller;
 
 import han.oose.dea.controller.dto.TokenDTO;
 import han.oose.dea.controller.dto.UserDTO;
+import han.oose.dea.controller.mappers.MapToDTO;
+import han.oose.dea.domain.Token;
 import han.oose.dea.service.LoginService;
 
 import javax.inject.Inject;
@@ -13,6 +15,7 @@ import javax.ws.rs.core.Response;
 public class LoginController {
 
     private LoginService loginService;
+    private MapToDTO mapToDTO = new MapToDTO();
 
     @POST
     @Path("")
@@ -23,7 +26,8 @@ public class LoginController {
             throw new BadRequestException();
         }
 
-        TokenDTO tokenDTO = loginService.login(userDTO.user, userDTO.password);
+        Token token = loginService.login(userDTO.user, userDTO.password);
+        TokenDTO tokenDTO = mapToDTO.mapTokenToDTO(token);
 
         return Response.status(Response.Status.CREATED).entity(tokenDTO).build();
     }
