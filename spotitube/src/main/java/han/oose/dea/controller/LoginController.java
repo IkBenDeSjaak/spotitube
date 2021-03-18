@@ -40,6 +40,10 @@ public class LoginController {
         }
     }
 
+    public void setMapToDTO(MapToDTO mapToDTO) {
+        this.mapToDTO = mapToDTO;
+    }
+
     @Inject
     public void setLoginService(LoginService loginService) {
         this.loginService = loginService;

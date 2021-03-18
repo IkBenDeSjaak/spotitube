@@ -2,6 +2,8 @@ package han.oose.dea.controller;
 
 import han.oose.dea.controller.dto.TokenDTO;
 import han.oose.dea.controller.dto.UserDTO;
+import han.oose.dea.controller.mappers.MapToDTO;
+import han.oose.dea.domain.Token;
 import han.oose.dea.service.LoginService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,9 +26,11 @@ public class LoginControllerTest {
     private LoginController loginController;
     private LoginService loginService;
 
+
     @BeforeEach
     public void setup() {
         loginService = mock(LoginService.class);
+
         loginController = new LoginController();
         loginController.setLoginService(loginService);
     }
@@ -42,7 +46,11 @@ public class LoginControllerTest {
             tokenDTO.user = USERNAME;
             tokenDTO.token = TOKEN;
 
-//            when(loginService.login(USERNAME, PASSWORD)).thenReturn(tokenDTO);
+            Token token = new Token();
+            token.setToken(TOKEN);
+            token.setUser(USERNAME);
+
+            when(loginService.login(USERNAME, PASSWORD)).thenReturn(token);
 
             Response response = loginController.login(userDTO);
             TokenDTO tokenDTOResponse = (TokenDTO) response.getEntity();

@@ -108,6 +108,10 @@ public class PlaylistsController {
         }
     }
 
+    public void setMapToDTO(MapToDTO mapToDTO) {
+        this.mapToDTO = mapToDTO;
+    }
+
     @Inject
     public void setPlaylistService(PlaylistsService playlistsService) {
         this.playlistsService = playlistsService;

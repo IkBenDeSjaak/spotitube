@@ -113,6 +113,10 @@ public class TracksController {
         }
     }
 
+    public void setMapToDTO(MapToDTO mapToDTO) {
+        this.mapToDTO = mapToDTO;
+    }
+
     @Inject
     public void setTracksService(TracksService tracksService) {
         this.tracksService = tracksService;
