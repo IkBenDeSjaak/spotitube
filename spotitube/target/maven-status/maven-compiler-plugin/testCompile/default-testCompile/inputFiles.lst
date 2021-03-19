@@ -1,5 +1,13 @@
-C:\Users\koksj\Documents\HAN\HBO-ICT\20-21-basissemesters\OOSE\GitHub\spotitube\spotitube\src\test\java\han\oose\dea\controller\LoginControllerTest.java
+C:\Users\koksj\Documents\HAN\HBO-ICT\20-21-basissemesters\OOSE\GitHub\spotitube\spotitube\src\test\java\han\oose\dea\services\TracksServiceTest.java
+C:\Users\koksj\Documents\HAN\HBO-ICT\20-21-basissemesters\OOSE\GitHub\spotitube\spotitube\src\test\java\han\oose\dea\resources\LoginResourceTest.java
+C:\Users\koksj\Documents\HAN\HBO-ICT\20-21-basissemesters\OOSE\GitHub\spotitube\spotitube\src\test\java\han\oose\dea\services\TokenServiceTest.java
+C:\Users\koksj\Documents\HAN\HBO-ICT\20-21-basissemesters\OOSE\GitHub\spotitube\spotitube\src\test\java\han\oose\dea\dao\TrackDAOTest.java
+C:\Users\koksj\Documents\HAN\HBO-ICT\20-21-basissemesters\OOSE\GitHub\spotitube\spotitube\src\test\java\han\oose\dea\resources\PlaylistsResourceTest.java
+C:\Users\koksj\Documents\HAN\HBO-ICT\20-21-basissemesters\OOSE\GitHub\spotitube\spotitube\src\test\java\han\oose\dea\services\LoginServiceTest.java
+C:\Users\koksj\Documents\HAN\HBO-ICT\20-21-basissemesters\OOSE\GitHub\spotitube\spotitube\src\test\java\han\oose\dea\dao\PlaylistDAOTest.java
+C:\Users\koksj\Documents\HAN\HBO-ICT\20-21-basissemesters\OOSE\GitHub\spotitube\spotitube\src\test\java\han\oose\dea\resources\dtomappers\MapToDTOTest.java
+C:\Users\koksj\Documents\HAN\HBO-ICT\20-21-basissemesters\OOSE\GitHub\spotitube\spotitube\src\test\java\han\oose\dea\services\UserServiceTest.java
 C:\Users\koksj\Documents\HAN\HBO-ICT\20-21-basissemesters\OOSE\GitHub\spotitube\spotitube\src\test\java\han\oose\dea\dao\UserDAOTest.java
 C:\Users\koksj\Documents\HAN\HBO-ICT\20-21-basissemesters\OOSE\GitHub\spotitube\spotitube\src\test\java\han\oose\dea\dao\TokenDAOTest.java
-C:\Users\koksj\Documents\HAN\HBO-ICT\20-21-basissemesters\OOSE\GitHub\spotitube\spotitube\src\test\java\han\oose\dea\service\TokenServiceTest.java
-C:\Users\koksj\Documents\HAN\HBO-ICT\20-21-basissemesters\OOSE\GitHub\spotitube\spotitube\src\test\java\han\oose\dea\service\LoginServiceTest.java
+C:\Users\koksj\Documents\HAN\HBO-ICT\20-21-basissemesters\OOSE\GitHub\spotitube\spotitube\src\test\java\han\oose\dea\resources\TracksResourceTest.java
+C:\Users\koksj\Documents\HAN\HBO-ICT\20-21-basissemesters\OOSE\GitHub\spotitube\spotitube\src\test\java\han\oose\dea\services\PlaylistsServiceTest.java

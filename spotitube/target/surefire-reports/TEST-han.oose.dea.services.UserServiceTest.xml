@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="han.oose.dea.services.UserServiceTest" time="0.008" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="han.oose.dea.services.UserServiceTest" time="0.003" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -17,7 +17,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="NL"/>
     <property name="sun.boot.library.path" value="C:\Users\koksj\.jdks\jdk-12\bin"/>
-    <property name="sun.java.command" value="C:\Users\koksj\AppData\Local\Temp\surefire5766244743349598071\surefirebooter11005688931420707663.jar C:\Users\koksj\AppData\Local\Temp\surefire5766244743349598071 2021-03-19T10-37-34_888-jvmRun1 surefire14370815979119960882tmp surefire_010310796967127012297tmp"/>
+    <property name="sun.java.command" value="C:\Users\koksj\AppData\Local\Temp\surefire15605714098179628056\surefirebooter7434042909378822920.jar C:\Users\koksj\AppData\Local\Temp\surefire15605714098179628056 2021-03-19T10-43-32_199-jvmRun1 surefire15074089376450515936tmp surefire_04149298285999185173tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\koksj\Documents\HAN\HBO-ICT\20-21-basissemesters\OOSE\GitHub\spotitube\spotitube\target\test-classes;C:\Users\koksj\Documents\HAN\HBO-ICT\20-21-basissemesters\OOSE\GitHub\spotitube\spotitube\target\classes;C:\Users\koksj\.m2\repository\javax\javaee-api\8.0\javaee-api-8.0.jar;C:\Users\koksj\.m2\repository\com\sun\mail\javax.mail\1.6.0\javax.mail-1.6.0.jar;C:\Users\koksj\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;C:\Users\koksj\.m2\repository\com\airhacks\jaxrs-cors\0.0.1\jaxrs-cors-0.0.1.jar;C:\Users\koksj\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.7.0\junit-jupiter-engine-5.7.0.jar;C:\Users\koksj\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\koksj\.m2\repository\org\junit\platform\junit-platform-engine\1.7.0\junit-platform-engine-1.7.0.jar;C:\Users\koksj\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\koksj\.m2\repository\org\junit\platform\junit-platform-commons\1.7.0\junit-platform-commons-1.7.0.jar;C:\Users\koksj\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.7.0\junit-jupiter-api-5.7.0.jar;C:\Users\koksj\.m2\repository\org\glassfish\jersey\core\jersey-common\2.33\jersey-common-2.33.jar;C:\Users\koksj\.m2\repository\jakarta\ws\rs\jakarta.ws.rs-api\2.1.6\jakarta.ws.rs-api-2.1.6.jar;C:\Users\koksj\.m2\repository\jakarta\annotation\jakarta.annotation-api\1.3.5\jakarta.annotation-api-1.3.5.jar;C:\Users\koksj\.m2\repository\org\glassfish\hk2\external\jakarta.inject\2.6.1\jakarta.inject-2.6.1.jar;C:\Users\koksj\.m2\repository\org\glassfish\hk2\osgi-resource-locator\1.0.3\osgi-resource-locator-1.0.3.jar;C:\Users\koksj\.m2\repository\org\mockito\mockito-core\3.8.0\mockito-core-3.8.0.jar;C:\Users\koksj\.m2\repository\net\bytebuddy\byte-buddy\1.10.20\byte-buddy-1.10.20.jar;C:\Users\koksj\.m2\repository\net\bytebuddy\byte-buddy-agent\1.10.20\byte-buddy-agent-1.10.20.jar;C:\Users\koksj\.m2\repository\org\objenesis\objenesis\3.1\objenesis-3.1.jar;C:\Users\koksj\.m2\repository\commons-codec\commons-codec\1.10\commons-codec-1.10.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -33,7 +33,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\koksj\AppData\Local\Temp\surefire5766244743349598071\surefirebooter11005688931420707663.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\koksj\AppData\Local\Temp\surefire15605714098179628056\surefirebooter7434042909378822920.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="12+33"/>
@@ -46,7 +46,6 @@
     <property name="localRepository" value="C:\Users\koksj\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Users\koksj\AppData\Local\Temp\"/>
-    <property name="idea.version" value="2020.3.2"/>
     <property name="java.version" value="12"/>
     <property name="user.dir" value="C:\Users\koksj\Documents\HAN\HBO-ICT\20-21-basissemesters\OOSE\GitHub\spotitube\spotitube"/>
     <property name="os.arch" value="amd64"/>
@@ -59,5 +58,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="56.0"/>
   </properties>
-  <testcase name="getHashedPasswordTest" classname="han.oose.dea.services.UserServiceTest" time="0.007"/>
+  <testcase name="getHashedPasswordTest" classname="han.oose.dea.services.UserServiceTest" time="0"/>
 </testsuite>
